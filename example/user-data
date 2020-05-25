@@ -1,0 +1,34 @@
+#cloud-config
+# vim: syntax=yaml
+#
+
+# Set your hostname here, the manage_etc_hosts will update the hosts file entries as well
+hostname: faasd
+manage_etc_hosts: true
+
+# Add an authorized ssh key to the pi user and lock password
+users:
+  - name: pi
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDlbIwM0SKMq497FGjehevXNN6lHTcuygLAxmyBQW9WbfRRxPo5sCBv8vYsehx+3bVqU9Rci49AZdfsJQvcLYbqU2UrGsangoifhEvAAT2aHi278d/lPuL0uMSBHDgVPw+5T6jgCQnwfMedNihIl2gV7GiSLH8Y7IOdT3Obj0BJeQ== johan@raspberry.local
+
+write_files:
+# Configure faasd basic auth user and password
+- path: /var/lib/faasd/secrets/basic-auth-user
+  content: faasd-admin
+- path: /var/lib/faasd/secrets/basic-auth-password
+  content: "++01=health=MISS=system=53++"
+# Uncomment to configure a static ip
+#- path: /etc/dhcpcd.conf
+#  content: |
+#    persistent
+#    # Generate Stable Private IPv6 Addresses instead of hardware based ones
+#    slaac private
+#    # static IP configuration:
+#    interface eth0
+#    static ip_address=192.168.0.30/24
+#    static routers=192.168.0.1
+#    static domain_name_servers=192.168.0.1 8.8.8.8
+  
