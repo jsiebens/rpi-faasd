@@ -22,7 +22,7 @@ This setup includes the following images:
 
 4. Insert the SD card into the Raspberry Pi and power it up.
 
-5. As soon the services are up and running, you can access OpenFaas on http://<your raspberry pi ip>:8080. The required basic auth credentials are available in `/var/lib/faasd/secrets/` on your Raspberry Pi
+5. As soon the services are up and running, you can access OpenFaas on http://RPI:8080. The required basic auth credentials are available in `/var/lib/faasd/secrets/` on your Raspberry Pi
 
 
 ## Building the image
