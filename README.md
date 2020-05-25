@@ -44,7 +44,7 @@ inletsctl create  \
   --region lon1
 ```
 
-After writing the `rpi-faasd-inlets-oss` image to an SD card, configure your instance with the proper values for the required environment variables. (See examples/user-data-inlets-oss)
+After writing the `rpi-faasd-inlets-pro` image to an SD card, configure your instance with the proper values for the required environment variables. (See examples/user-data-inlets-oss)
 
 ### in combination with inlets pro
 
