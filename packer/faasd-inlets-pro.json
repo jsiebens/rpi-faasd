@@ -1,0 +1,37 @@
+{
+  "variables": {
+    "faasd_version": "",
+    "iso_url": "",
+    "iso_checksum": "",
+    "iso_checksum_type": ""
+  },
+  "builders": [
+    {
+      "type": "arm-image",
+      "iso_url": "{{user `iso_url`}}",
+      "iso_checksum_type": "{{user `iso_checksum_type`}}",
+      "iso_checksum": "{{user `iso_checksum`}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "apt-get update",
+        "touch /boot/ssh"
+      ]
+    },
+    {
+      "type": "shell",
+      "environment_vars": [
+        "FAASD_VERSION={{user `faasd_version`}}"
+      ],
+      "scripts": [
+        "scripts/install-cloud-init.sh",
+        "scripts/install-faasd.sh",
+        "scripts/install-inlets-pro.sh",
+        "scripts/install-caddy.sh"
+      ]
+    }
+  ]
+}

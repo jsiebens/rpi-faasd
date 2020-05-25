@@ -13,6 +13,17 @@ define build_image
 	rm -rf ${PWD}/output-arm-image
 endef
 
+.PHONY: all
+all: faasd faasd-inlets-oss faasd-inlets-pro
+
 .PHONY: faasd
 faasd:
 	$(call build_image,faasd)
+
+.PHONY: faasd-inlets-oss
+faasd-inlets-oss:
+	$(call build_image,faasd-inlets-oss)
+
+.PHONY: faasd-inlets-pro
+faasd-inlets-pro:
+	$(call build_image,faasd-inlets-pro)
