@@ -1,6 +1,6 @@
 # faasd on a Raspberry Pi
 
-This repository contains Packer templates and scripts to build a Raspbian image with [faasd](https://github.com/openfaas/faasd) pre-installed.
+This repository contains Packer templates and scripts to build a Raspbian image with [faasd](https://github.com/openfaas/faasd) and [inlets](https://inlets.dev) [oss](https://github.com/inlets/inlets)/[pro](https://github.com/inlets/inlets-pro) pre-installed.
 
 > faasd is the same OpenFaaS experience and ecosystem, but without Kubernetes. Functions and microservices can be deployed anywhere with reduced overheads whilst retaining the portability of containers and cloud-native tooling such as containerd and CNI.
 
@@ -10,9 +10,15 @@ Beside containerd and faasd, cloud-init is also available to initialize and conf
 
 This setup includes the following images:
 
-- __rpi-faasd.iso__: a Raspbian image with containerd and faasd as a systemd service
+- __rpi-faasd.iso__: a Raspbian image with containerd and faasd as systemd services, to run a private faasd instance.
 
-## How to use this image
+- __rpi-faasd-inlets-oss.iso__: a Raspbian image with containerd, faasd and inlets oss as systemd services, to run a private faasd instance with a public endpoint.
+
+- __rpi-faasd-inlets-pro.iso__: a Raspbian image with containerd, faasd, Caddy and inlets pro as systemd services, to run a private faasd instance with a secure (TLS) public endpoint.
+
+## How to use this images
+
+### in general
 
 1. Download the latest release or build the image.
 
@@ -24,8 +30,44 @@ This setup includes the following images:
 
 5. As soon the services are up and running, you can access OpenFaas on `http://<your raspberry pi ip>:8080`. The required basic auth credentials are available in `/var/lib/faasd/secrets/` on your Raspberry Pi
 
+### in combination with inlets oss
 
-## Building the image
+To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
+I find the use of `inletsctl` to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
+
+Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
+
+```
+inletsctl create  \   
+  --provider digitalocean \   
+  --access-token-file ~/access-token.txt \   
+  --region lon1
+```
+
+After writing the `rpi-faasd-inlets-oss` image to an SD card, configure your instance with the proper values for the required environment variables. (See examples/user-data-inlets-oss)
+
+### in combination with inlets pro
+
+To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
+I find the use of `inletsctl` to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
+
+Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
+
+```
+inletsctl create  \   
+  --provider digitalocean \   
+  --access-token-file ~/access-token.txt \   
+  --region lon1 \
+  --tcp-remote 127.0.0.1
+```
+
+The last `--remote-tcp` flag, it tells the inlets pro client where to send traffic. In this case it will be the loopback-interface. The inlets pro client is configured to punch out ports 80 and 443 out of the tunnel.
+
+One thing left to do: get a domain ready for your faasd installation. Once you have a domain, add a DNS A record with the public ip of the exit-node. A domain is required for Caddy to generate some TLS certificates with Let's Encrypt.
+
+After writing the `rpi-faasd-inlets-oss` image to an SD card, configure your instance with the proper values for the required environment variables. (See examples/user-data-inlets-oss)
+
+## Building the images
 
 This project includes a Vagrant file and some scripts to build the images in an isolated environment.
 
