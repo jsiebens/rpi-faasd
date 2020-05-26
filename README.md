@@ -33,7 +33,7 @@ This setup includes the following images:
 ### in combination with inlets oss
 
 To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
-I find the use of `inletsctl` to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
+I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
 
 Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
 
@@ -49,7 +49,7 @@ After writing the `rpi-faasd-inlets-pro` image to an SD card, configure your ins
 ### in combination with inlets pro
 
 To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
-I find the use of `inletsctl` to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
+I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
 
 Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
 
