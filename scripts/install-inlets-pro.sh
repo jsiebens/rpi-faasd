@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-echo "=> Downloading and installing inlets pro"
+echo "=> Downloading and installing inlets pro ${INLETS_PRO_VERSION}"
 
-curl -SLfs "https://github.com/inlets/inlets-pro/releases/download/0.6.0/inlets-pro-armhf" \
+curl -SLfs "https://github.com/inlets/inlets-pro/releases/download/${INLETS_PRO_VERSION}/inlets-pro-armhf" \
     --output "/usr/local/bin/inlets-pro" \
     && chmod a+x "/usr/local/bin/inlets-pro"
 

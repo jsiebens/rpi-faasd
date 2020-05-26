@@ -1,6 +1,8 @@
 {
   "variables": {
     "faasd_version": "",
+    "inlets_pro_version": "",
+    "caddy_version": "",
     "iso_url": "",
     "iso_checksum": "",
     "iso_checksum_type": ""
@@ -24,7 +26,9 @@
     {
       "type": "shell",
       "environment_vars": [
-        "FAASD_VERSION={{user `faasd_version`}}"
+        "FAASD_VERSION={{user `faasd_version`}}",
+        "INLETS_PRO_VERSION={{user `inlets_pro_version`}}",
+        "CADDY_VERSION={{user `caddy_version`}}"
       ],
       "scripts": [
         "scripts/install-cloud-init.sh",
