@@ -6,7 +6,7 @@ This repository contains Packer templates and scripts to build a Raspbian image 
 
 The installation took inspiration from the [blog of Alex Ellis](https://blog.alexellis.io/faasd-for-lightweight-serverless/), which explains how to install faasd on a Raspberry Pi in more detail.
 
-Beside containerd and faasd, cloud-init is also available to initialize and configure a Raspian instance. With cloud-init you can customize e.g. hostname, authorized ssh keys, a static ip, basic auth for faasd, ... 
+Beside containerd, faasd and inlets, also [cloud-init](https://cloudinit.readthedocs.io/en/18.3/) is available to initialize and configure a Raspian instance. With cloud-init you can customize e.g. hostname, authorized ssh keys, a static ip, basic auth for faasd, ... 
 
 This setup includes the following images:
 
@@ -20,7 +20,7 @@ This setup includes the following images:
 
 ### in general
 
-1. Download the latest release or build the image.
+1. Download the image of the latest [release](https://github.com/jsiebens/rpi-faasd/releases) or build the image.
 
 2. Flash the image to an SD card.
 
