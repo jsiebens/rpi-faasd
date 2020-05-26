@@ -10,6 +10,6 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", inline: "sudo apt-get install -y build-essential"
-  config.vm.provision "docker", images: ["registry.gitlab.com/nosceon/rpi-images/build-tools:build"]
+  config.vm.provision "docker", images: ["quay.io/solo-io/packer-builder-arm-image:v0.1.4.5"]
   
 end
