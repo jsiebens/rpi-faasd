@@ -1,5 +1,7 @@
 # faasd on a Raspberry Pi
 
+[![Build Status](https://travis-ci.org/jsiebens/rpi-faasd.svg?branch=master)](https://travis-ci.org/jsiebens/rpi-faasd)
+
 This repository contains Packer templates and scripts to build a Raspbian image with [faasd](https://github.com/openfaas/faasd) and [inlets](https://inlets.dev) [oss](https://github.com/inlets/inlets)/[pro](https://github.com/inlets/inlets-pro) pre-installed.
 
 > faasd is the same OpenFaaS experience and ecosystem, but without Kubernetes. Functions and microservices can be deployed anywhere with reduced overheads whilst retaining the portability of containers and cloud-native tooling such as containerd and CNI.
