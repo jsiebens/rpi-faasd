@@ -35,7 +35,7 @@ This setup includes the following images:
 ### in combination with inlets oss
 
 To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
-I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
+I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
 
 Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
 
@@ -51,7 +51,7 @@ After writing the `rpi-faasd-inlets-pro` image to an SD card, configure your ins
 ### in combination with inlets pro
 
 To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
-I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it with by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
+I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
 
 Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
 
@@ -63,7 +63,7 @@ inletsctl create  \
   --tcp-remote 127.0.0.1
 ```
 
-The last `--remote-tcp` flag, it tells the inlets pro client where to send traffic. In this case it will be the loopback-interface. The inlets pro client is configured to punch out ports 80 and 443 out of the tunnel.
+The last flag, `--remote-tcp`, tells the inlets pro client where to send traffic, which in this case will be the loopback-interface. The inlets pro client is configured to punch out ports 80 and 443 out of the tunnel.
 
 One thing left to do: get a domain ready for your faasd installation. Once you have a domain, add a DNS A record with the public ip of the exit-node. A domain is required for Caddy to generate some TLS certificates with Let's Encrypt.
 
