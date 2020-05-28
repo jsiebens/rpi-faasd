@@ -18,7 +18,7 @@ This setup includes the following images:
 
 - __rpi-faasd-inlets-pro.iso__: a Raspbian image with containerd, faasd, Caddy and inlets pro as systemd services, to run a private faasd instance with a secure (TLS) public endpoint.
 
-## How to use this images
+## How to use these images
 
 ### in general
 
