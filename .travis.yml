@@ -3,10 +3,15 @@ language: minimal
 services:
 - docker
 
-before_install:
-- docker pull quay.io/solo-io/packer-builder-arm-image:v0.1.4.5
-
 script:
-- sudo make faasd
-- sudo make faasd-inlets-oss
-- sudo make faasd-inlets-pro
+- sudo make dist
+
+deploy:
+  provider: releases
+  api_key:
+    secure: qJSjFAZMKs37W+xkNC5s5YwHBKJNa/T5YVIWN9DNRLZzny+miRyaoFBrgEeNB9nDjkBYsVEWriG4EPGLgyQobxj/JQl2n6XTppqe9myJX9vBWreMcKcKI/KALbvdIIkdamlscvdL6q5FWopoMLoLWOqVyGW4r+59aEKHj5N7X7IMCkZkN95VzuZ9gKA1ZMRp+81LxDbLZ2i/UMJZzJGUrvfe0DljL8ZJAHOqlv4+hT3nhxhqBbfSWFtXFI+RTVCAmMfBNSU+FjJxoXXMVfY90pFkTatXKs6jIaL6UmSk1/KcKFuprf/jvQpozhyS5Kd6H1gPGkv0fIjiaNbZggbEObRiEVLODXWwOiB/NvrpfSf0sYtLuiDiNboFBRvixqizqZs+Iqxk9f/QXm53rE/inD2qZXuuR0jpuicgcdWJuMV+PmIIdYVJOk8FsYjFG9PvFv7FRYkeSrfjmCMN1YW2f6xlXlUKEOHAI8/h3Xe2c1RwvLVyJHTnTMlAaJPRHd+QAgvvFkqRBwyRCVCB9cFAfXmoBncEqwYrrOZHP720vmOL32oK5Mc+JUCoILjDCE9VA9Mye4R74OA9V+n6jXQ8Iki76l/kXad2cyh6NsZmqQen2P02ZRrvIZySjBrf1mUerMBmxjGCBCy3ZkSl3wrgXb9U9t8YQnbd1YckrFxmFRw=
+  file_glob: true
+  file: dist/*.tgz
+  skip_cleanup: true
+  on:
+    tags: true
