@@ -5,7 +5,8 @@
     "caddy_version": "",
     "iso_url": "",
     "iso_checksum": "",
-    "iso_checksum_type": ""
+    "iso_checksum_type": "",
+    "preferred_mirror": "{{env `PREFERRED_MIRROR`}}"
   },
   "builders": [
     {
@@ -19,7 +20,6 @@
     {
       "type": "shell",
       "inline": [
-        "apt-get update",
         "touch /boot/ssh"
       ]
     },
@@ -28,13 +28,16 @@
       "environment_vars": [
         "FAASD_VERSION={{user `faasd_version`}}",
         "INLETS_PRO_VERSION={{user `inlets_pro_version`}}",
-        "CADDY_VERSION={{user `caddy_version`}}"
+        "CADDY_VERSION={{user `caddy_version`}}",
+        "PREFERRED_MIRROR={{user `preferred_mirror`}}"
       ],
       "scripts": [
+        "scripts/before-installation.sh",
         "scripts/install-cloud-init.sh",
         "scripts/install-faasd.sh",
         "scripts/install-inlets-pro.sh",
-        "scripts/install-caddy.sh"
+        "scripts/install-caddy.sh",
+        "scripts/after-installation.sh"
       ]
     }
   ]

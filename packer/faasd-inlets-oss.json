@@ -4,7 +4,8 @@
     "inlets_oss_version": "",
     "iso_url": "",
     "iso_checksum": "",
-    "iso_checksum_type": ""
+    "iso_checksum_type": "",
+    "preferred_mirror": "{{env `PREFERRED_MIRROR`}}"
   },
   "builders": [
     {
@@ -18,7 +19,6 @@
     {
       "type": "shell",
       "inline": [
-        "apt-get update",
         "touch /boot/ssh"
       ]
     },
@@ -26,12 +26,15 @@
       "type": "shell",
       "environment_vars": [
         "FAASD_VERSION={{user `faasd_version`}}",
-        "INLETS_OSS_VERSION={{user `inlets_oss_version`}}"
+        "INLETS_OSS_VERSION={{user `inlets_oss_version`}}",
+        "PREFERRED_MIRROR={{user `preferred_mirror`}}"
       ],
       "scripts": [
+        "scripts/before-installation.sh",
         "scripts/install-cloud-init.sh",
         "scripts/install-faasd.sh",
-        "scripts/install-inlets-oss.sh"
+        "scripts/install-inlets-oss.sh",
+        "scripts/after-installation.sh"
       ]
     }
   ]
