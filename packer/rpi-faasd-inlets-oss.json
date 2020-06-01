@@ -18,12 +18,6 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "touch /boot/ssh"
-      ]
-    },
-    {
-      "type": "shell",
       "environment_vars": [
         "FAASD_VERSION={{user `faasd_version`}}",
         "INLETS_OSS_VERSION={{user `inlets_oss_version`}}",

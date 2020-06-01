@@ -17,12 +17,6 @@
   "provisioners": [
     {
       "type": "shell",
-      "inline": [
-        "touch /boot/ssh"
-      ]
-    },
-    {
-      "type": "shell",
       "environment_vars": [
         "FAASD_VERSION={{user `faasd_version`}}",
         "PREFERRED_MIRROR={{user `preferred_mirror`}}"
