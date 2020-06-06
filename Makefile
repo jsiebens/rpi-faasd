@@ -18,7 +18,7 @@ endef
 
 SRCS := $(wildcard packer/rpi-*.json)
 IMAGES := $(SRCS:packer/rpi-%.json=rpi-%.img)
-ARCHIVES := $(SRCS:packer/rpi-%.json=rpi-%.tgz)
+ARCHIVES := $(SRCS:packer/rpi-%.json=rpi-%.zip)
 
 all: ${IMAGES}
 
@@ -30,6 +30,6 @@ clean:
 %.img:
 	$(call build_image,$*)
 
-%.tgz: %.img
+%.zip: %.img
 	rm -rf dist/$@
-	tar -czvf dist/$@ -C dist $<
+	cd dist; zip $@ $<
