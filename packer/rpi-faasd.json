@@ -9,6 +9,7 @@
   "builders": [
     {
       "type": "arm-image",
+      "image_type": "raspberrypi",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "iso_checksum": "{{user `iso_checksum`}}"
@@ -23,7 +24,6 @@
       ],
       "scripts": [
         "scripts/before-installation.sh",
-        "scripts/install-cloud-init.sh",
         "scripts/install-faasd.sh",
         "scripts/after-installation.sh"
       ]

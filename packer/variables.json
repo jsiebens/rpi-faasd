@@ -4,7 +4,7 @@
     "inlets_pro_version": "0.6.0",
     "caddy_version": "2.0.0",
     
-    "iso_url": "https://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2020-02-07/2020-02-05-raspbian-buster-lite.zip",
-    "iso_checksum": "7ed5a6c1b00a2a2ab5716ffa51354547bb1b5a6d5bcb8c996b239f9ecd25292b",
+    "iso_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip",
+    "iso_checksum": "b6c9bb758bbc169286930142a97b01b5a2320803c648a92838c37887f5cfced5",
     "iso_checksum_type": "sha256"
 }
