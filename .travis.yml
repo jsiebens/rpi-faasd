@@ -1,7 +1,9 @@
 language: minimal
+dist: focal
 
-services:
-- docker
+before_install:
+  - sudo unlink /usr/local/bin/packer
+  - ci/provision.sh
 
 script:
 - sudo make dist
