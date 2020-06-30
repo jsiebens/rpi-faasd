@@ -32,7 +32,7 @@ curl -SLfs "https://github.com/openfaas/faasd/releases/download/${FAASD_VERSION}
     --output "/usr/local/bin/faasd" \
     && chmod a+x "/usr/local/bin/faasd"
 
-git clone https://github.com/openfaas/faasd
+git clone https://github.com/openfaas/faasd && git -C faasd checkout ${FAASD_VERSION}
 
 systemctl enable containerd
 cd faasd && /usr/local/bin/faasd install
