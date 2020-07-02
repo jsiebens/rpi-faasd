@@ -1,9 +1,15 @@
 #!/bin/bash
 set -e
 
-echo "=> Downloading and installing inlets pro ${INLETS_PRO_VERSION}"
+INLETS_ARCH=armhf
 
-curl -SLfs "https://github.com/inlets/inlets-pro/releases/download/${INLETS_PRO_VERSION}/inlets-pro-armhf" \
+if [[ $PACKER_BUILD_NAME == *"arm64"* ]]; then
+  INLETS_ARCH=arm64
+fi
+
+echo "=> Downloading and installing inlets pro ${INLETS_PRO_VERSION} ${INLETS_ARCH}"
+
+curl -SLfs "https://github.com/inlets/inlets-pro/releases/download/${INLETS_PRO_VERSION}/inlets-pro-${INLETS_ARCH}" \
     --output "/usr/local/bin/inlets-pro" \
     && chmod a+x "/usr/local/bin/inlets-pro"
 
