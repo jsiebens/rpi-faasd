@@ -1,9 +1,16 @@
 .PHONY = %
 
-SRCS := $(wildcard packer/rpi-*.json)
-IMAGES := $(SRCS:packer/rpi-%.json=rpi-%.img)
+RASPIOS_SRCS := $(wildcard packer/raspios/rpi-*.json)
+RASPIOS_IMAGES := $(RASPIOS_SRCS:packer/raspios/rpi-%.json=raspios/rpi-%.img)
 
-all: ${IMAGES}
+UBUNTU_SRCS := $(wildcard packer/ubuntu/rpi-*.json)
+UBUNTU_IMAGES := $(UBUNTU_SRCS:packer/ubuntu/rpi-%.json=ubuntu/rpi-%.img)
+
+all: raspios ubuntu
+
+raspios: ${RASPIOS_IMAGES}
+
+ubuntu: ${UBUNTU_IMAGES}
 
 clean:
 	rm -rf images

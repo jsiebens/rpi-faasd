@@ -1,12 +1,16 @@
 language: minimal
 dist: focal
 
+env:
+  - TARGET=raspios
+  - TARGET=ubuntu
+
 before_install:
   - sudo unlink /usr/local/bin/packer
   - ci/provision.sh
 
 script:
-- sudo make all
+- sudo make $TARGET
 
 before_deploy:
 - cd dist && sudo ../ci/hashgen.sh && cd ..
