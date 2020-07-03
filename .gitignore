@@ -1,5 +1,6 @@
 .vagrant
 output-arm-image
 dist
+images
 packer_cache
 *.log
