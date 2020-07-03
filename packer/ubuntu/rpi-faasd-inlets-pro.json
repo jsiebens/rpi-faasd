@@ -6,6 +6,12 @@
   },
   "builders": [
     {
+      "type": "shell",
+      "inline": [
+        "sed -i '1 s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/' /boot/firmware/cmdline.txt"
+      ]
+    },
+    {
       "name": "rpi-ubuntu-arm64",
       "type": "arm-image",
       "image_type": "raspberrypi",

@@ -29,6 +29,12 @@
   "provisioners": [
     {
       "type": "shell",
+      "inline": [
+        "sed -i '1 s/$/ cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1/' /boot/firmware/cmdline.txt"
+      ]
+    },
+    {
+      "type": "shell",
       "environment_vars": [
         "FAASD_VERSION={{user `faasd_version`}}",
         "INLETS_OSS_VERSION={{user `inlets_oss_version`}}"
