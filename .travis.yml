@@ -3,7 +3,9 @@ dist: focal
 
 env:
   - TARGET=raspios
-  - TARGET=ubuntu
+  - TARGET=ubuntu/rpi-faasd.img
+  - TARGET=ubuntu/rpi-faasd-inlets-oss.img
+  - TARGET=ubuntu/rpi-faasd-inlets-pro.img
 
 before_install:
   - sudo unlink /usr/local/bin/packer
