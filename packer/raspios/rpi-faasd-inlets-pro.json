@@ -30,6 +30,7 @@
         "scripts/install-containerd.sh",
         "scripts/install-cni-plugins.sh",
         "scripts/install-faasd.sh",
+        "scripts/install-caddy.sh",
         "scripts/install-inlets-pro.sh",
         "scripts/reset-apt.sh"
       ]
