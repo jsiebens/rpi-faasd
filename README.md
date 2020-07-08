@@ -12,11 +12,11 @@ Beside containerd, faasd and inlets, also [cloud-init](https://cloudinit.readthe
 
 This setup includes the following images:
 
-- __rpi-faasd.iso__: a Raspbian image with containerd and faasd as systemd services, to run a private faasd instance.
+- __rpi-faasd__: a Raspbian/Ubuntu image with containerd and faasd as systemd services, to run a private faasd instance.
 
-- __rpi-faasd-inlets-oss.iso__: a Raspbian image with containerd, faasd and inlets oss as systemd services, to run a private faasd instance with a public endpoint.
+- __rpi-faasd-inlets-oss__: a Raspbian/Ubuntu image with containerd, faasd and inlets oss as systemd services, to run a private faasd instance with a public endpoint.
 
-- __rpi-faasd-inlets-pro.iso__: a Raspbian image with containerd, faasd, Caddy and inlets pro as systemd services, to run a private faasd instance with a secure (TLS) public endpoint.
+- __rpi-faasd-inlets-pro__: a Raspbian/Ubuntu image with containerd, faasd, Caddy and inlets pro as systemd services, to run a private faasd instance with a secure (TLS) public endpoint.
 
 ## How to use these images
 
