@@ -9,7 +9,7 @@
       "name": "rpi-ubuntu-arm64",
       "type": "arm-image",
       "image_type": "raspberrypi",
-      "output_filename": "images/rpi-faasd-ubuntu64.img",
+      "output_filename": "images/rpi-faasd-inlets-pro-ubuntu-arm64.img",
       "iso_url": "http://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04-preinstalled-server-arm64+raspi.img.xz",
       "iso_checksum_type": "sha256",
       "iso_checksum": "48167067d65c5192ffe041c9cc4958cb7fcdfd74fa15e1937a47430ed7b9de99",
@@ -55,7 +55,7 @@
   "post-processors": [
     {
       "type": "compress",
-      "output": "dist/rpi-faasd-inlets-pro-ubuntu64.zip"
+      "output": "dist/rpi-faasd-inlets-pro-ubuntu-arm64.img.xz"
     }
   ]  
 }

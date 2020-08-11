@@ -8,7 +8,7 @@
       "name": "rpi-raspios-armhf",
       "type": "arm-image",
       "image_type": "raspberrypi",
-      "output_filename": "images/rpi-faasd-raspios32.img",
+      "output_filename": "images/rpi-faasd-raspios-armhf.img",
       "iso_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip",
       "iso_checksum_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip.sha256",
       "iso_checksum_type": "sha256"
@@ -33,7 +33,7 @@
   "post-processors": [
     {
       "type": "compress",
-      "output": "dist/rpi-faasd-raspios32.zip"
+      "output": "dist/rpi-faasd-raspios-armhf.img.xz"
     }
   ]
 }
