@@ -12,7 +12,12 @@ before_install:
   - ci/provision.sh
 
 script:
+  # Output something every 10 minutes or Travis kills the job
+  - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
   - sudo make $TARGET
+  # Killing background sleep loop
+  - kill %1
+  - ls -lh dist
 
 before_deploy:
   - cd dist && sudo ../ci/hashgen.sh && cd ..
