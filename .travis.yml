@@ -2,15 +2,15 @@ language: minimal
 dist: focal
 
 env:
-  - BASE=raspios-armhf TARGET=faasd
-  - BASE=raspios-armhf TARGET=faasd-inlets-oss
-  - BASE=raspios-armhf TARGET=faasd-inlets-pro
   - BASE=ubuntu-armhf TARGET=faasd
   - BASE=ubuntu-armhf TARGET=faasd-inlets-oss
   - BASE=ubuntu-armhf TARGET=faasd-inlets-pro
   - BASE=ubuntu-arm64 TARGET=faasd
   - BASE=ubuntu-arm64 TARGET=faasd-inlets-oss
   - BASE=ubuntu-arm64 TARGET=faasd-inlets-pro
+  - BASE=raspios-armhf TARGET=faasd
+  - BASE=raspios-armhf TARGET=faasd-inlets-oss
+  - BASE=raspios-armhf TARGET=faasd-inlets-pro  
 
 before_install:
   - sudo unlink /usr/local/bin/packer
