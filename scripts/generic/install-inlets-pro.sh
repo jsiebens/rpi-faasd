@@ -1,15 +1,25 @@
 #!/bin/bash
 set -e
 
-INLETS_ARCH=armhf
+ARCH=$(uname -m)
+case $ARCH in
+    arm64)
+        SUFFIX=arm64
+        ;;
+    aarch64)
+        SUFFIX=arm64
+        ;;
+    arm*)
+        SUFFIX=armhf
+        ;;
+    *)
+        echo "Unsupported architecture $ARCH"
+        exit 1
+esac
 
-if [[ $PACKER_BUILD_NAME == *"arm64"* ]]; then
-  INLETS_ARCH=arm64
-fi
+echo "=> Downloading and installing inlets pro ${INLETS_PRO_VERSION} ${SUFFIX}"
 
-echo "=> Downloading and installing inlets pro ${INLETS_PRO_VERSION} ${INLETS_ARCH}"
-
-curl -SLfs "https://github.com/inlets/inlets-pro/releases/download/${INLETS_PRO_VERSION}/inlets-pro-${INLETS_ARCH}" \
+curl -SLfs "https://github.com/inlets/inlets-pro/releases/download/${INLETS_PRO_VERSION}/inlets-pro-${SUFFIX}" \
     --output "/usr/local/bin/inlets-pro" \
     && chmod a+x "/usr/local/bin/inlets-pro"
 

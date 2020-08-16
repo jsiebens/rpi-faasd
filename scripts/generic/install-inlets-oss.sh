@@ -1,15 +1,25 @@
 #!/bin/bash
 set -e
 
-INLETS_ARCH=armhf
+ARCH=$(uname -m)
+case $ARCH in
+    arm64)
+        SUFFIX=arm64
+        ;;
+    aarch64)
+        SUFFIX=arm64
+        ;;
+    arm*)
+        SUFFIX=armhf
+        ;;
+    *)
+        echo "Unsupported architecture $ARCH"
+        exit 1
+esac
 
-if [[ $PACKER_BUILD_NAME == *"arm64"* ]]; then
-  INLETS_ARCH=arm64
-fi
+echo "=> Downloading and installing inlets oss ${INLETS_OSS_VERSION} ${SUFFIX}"
 
-echo "=> Downloading and installing inlets oss ${INLETS_OSS_VERSION} ${INLETS_ARCH}"
-
-curl -SLfs "https://github.com/inlets/inlets/releases/download/${INLETS_OSS_VERSION}/inlets-${INLETS_ARCH}" \
+curl -SLfs "https://github.com/inlets/inlets/releases/download/${INLETS_OSS_VERSION}/inlets-${SUFFIX}" \
     --output "/usr/local/bin/inlets" \
     && chmod a+x "/usr/local/bin/inlets"
 

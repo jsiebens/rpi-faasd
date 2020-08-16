@@ -1,0 +1,70 @@
+{
+  "builders": [
+    {
+      "name": "faasd",
+      "type": "arm-image",
+      "image_type": "raspberrypi",
+      "output_filename": "images/rpi-faasd.img",
+      "iso_url": "https://cdimage.ubuntu.com/releases/20.04.1/release/ubuntu-20.04.1-preinstalled-server-armhf+raspi.img.xz",
+      "iso_checksum_type": "sha256",
+      "iso_checksum": "bfd1eee56f7e346e1645666fc184af854c536b3ab4e1ce49d06c266f21b1ee46",
+      "image_mounts": [
+        "/boot/firmware",
+        "/"
+      ],
+      "additional_chroot_mounts": [
+        [
+          "bind",
+          "/run/systemd",
+          "/run/systemd"
+        ]
+      ]
+    },
+    {
+      "name": "faasd-inlets-oss",
+      "type": "arm-image",
+      "image_type": "raspberrypi",
+      "output_filename": "images/rpi-faasd.img",
+      "iso_url": "https://cdimage.ubuntu.com/releases/20.04.1/release/ubuntu-20.04.1-preinstalled-server-armhf+raspi.img.xz",
+      "iso_checksum_type": "sha256",
+      "iso_checksum": "bfd1eee56f7e346e1645666fc184af854c536b3ab4e1ce49d06c266f21b1ee46",
+      "image_mounts": [
+        "/boot/firmware",
+        "/"
+      ],
+      "additional_chroot_mounts": [
+        [
+          "bind",
+          "/run/systemd",
+          "/run/systemd"
+        ]
+      ]
+    },
+    {
+      "name": "faasd-inlets-pro",
+      "type": "arm-image",
+      "image_type": "raspberrypi",
+      "output_filename": "images/rpi-faasd.img",
+      "iso_url": "https://cdimage.ubuntu.com/releases/20.04.1/release/ubuntu-20.04.1-preinstalled-server-armhf+raspi.img.xz",
+      "iso_checksum_type": "sha256",
+      "iso_checksum": "bfd1eee56f7e346e1645666fc184af854c536b3ab4e1ce49d06c266f21b1ee46",
+      "image_mounts": [
+        "/boot/firmware",
+        "/"
+      ],
+      "additional_chroot_mounts": [
+        [
+          "bind",
+          "/run/systemd",
+          "/run/systemd"
+        ]
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "compress",
+      "output": "dist/rpi-{{.BuildName}}-ubuntu-armhf.img.xz"
+    }
+  ]
+}

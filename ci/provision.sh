@@ -8,7 +8,8 @@ sudo apt-get install -y \
     curl \
     zip \
     unzip \
-    xz-utils
+    xz-utils \
+    jq
 
 # Download and install packer
 [[ -e /tmp/packer ]] && rm -rf /tmp/packer*

@@ -1,17 +1,27 @@
 #!/bin/bash
 set -e
 
+ARCH=$(uname -m)
+case $ARCH in
+    arm64)
+        FAASD_ARCH=arm64
+        ;;
+    aarch64)
+        FAASD_ARCH=arm64
+        ;;
+    arm*)
+        FAASD_ARCH=armhf
+        ;;
+    *)
+        echo "Unsupported architecture $ARCH"
+        exit 1
+esac
+
 apt-get install -y \
     runc \
     bridge-utils \
     curl \
     git
-
-FAASD_ARCH=armhf
-
-if [[ $PACKER_BUILD_NAME == *"arm64"* ]]; then
-  FAASD_ARCH=arm64
-fi
 
 mkdir -p /tmp/faasd-installation
 cd /tmp/faasd-installation
