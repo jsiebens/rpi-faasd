@@ -33,7 +33,7 @@
   "post-processors": [
     {
       "type": "compress",
-      "output": "dist/rpi-faasd-raspios-armhf.img.xz"
+      "output": "dist/rpi-faasd-raspios-armhf.img.zip"
     }
   ]
 }

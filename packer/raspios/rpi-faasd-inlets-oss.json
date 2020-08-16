@@ -36,7 +36,7 @@
   "post-processors": [
     {
       "type": "compress",
-      "output": "dist/rpi-faasd-inlets-oss-raspios-armhf.img.xz"
+      "output": "dist/rpi-faasd-inlets-oss-raspios-armhf.img.zip"
     }
   ]
 }
