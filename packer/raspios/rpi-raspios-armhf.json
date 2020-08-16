@@ -4,7 +4,7 @@
       "name": "faasd",
       "type": "arm-image",
       "image_type": "raspberrypi",
-      "output_filename": "images/rpi-faasd-raspios-armhf.img",
+      "output_filename": "images/rpi-faasd.img",
       "iso_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip",
       "iso_checksum_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip.sha256",
       "iso_checksum_type": "sha256"
@@ -13,7 +13,7 @@
       "name": "faasd-inlets-oss",
       "type": "arm-image",
       "image_type": "raspberrypi",
-      "output_filename": "images/rpi-faasd-raspios-armhf.img",
+      "output_filename": "images/rpi-faasd-inlets-oss.img",
       "iso_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip",
       "iso_checksum_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip.sha256",
       "iso_checksum_type": "sha256"
@@ -22,7 +22,7 @@
       "name": "faasd-inlets-pro",
       "type": "arm-image",
       "image_type": "raspberrypi",
-      "output_filename": "images/rpi-faasd-raspios-armhf.img",
+      "output_filename": "images/rpi-faasd-inlets-pro.img",
       "iso_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip",
       "iso_checksum_url": "https://github.com/jsiebens/rpi-cloud-init/releases/download/v0.2/rpi-cloud-init.zip.sha256",
       "iso_checksum_type": "sha256"
