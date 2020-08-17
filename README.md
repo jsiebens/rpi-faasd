@@ -60,7 +60,7 @@ inletsctl create  \
   --provider digitalocean \   
   --access-token-file ~/access-token.txt \   
   --region lon1 \
-  --tcp-remote 127.0.0.1
+  --remote-tcp 127.0.0.1
 ```
 
 The last flag, `--remote-tcp`, tells the inlets pro client where to send traffic, which in this case will be the loopback-interface. The inlets pro client is configured to punch out ports 80 and 443 out of the tunnel.
