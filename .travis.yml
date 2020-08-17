@@ -22,18 +22,15 @@ script:
   - sudo ./build.sh $BASE $TARGET
   # Killing background sleep loop
   - kill %1
-  - ls -lh dist
-
-before_deploy:
   - cd dist && sudo ../ci/hashgen.sh && cd ..
+  - ls -lh dist
 
 deploy:
   provider: releases
   api_key:
     secure: PaTpIQysjpvsNQwdoFLqzktqYXURwI8JTWXxl++TeJxa/Kw/J2ihhb4rJgi6md1FmuJLFYzIjsc4eqPbDq2xBo0f7xWuxVnVXOi19Kvr6qwcheUTn5f5xZft2xgV1BONSTl2gohYNeUxL4MNzKK+hQCCV2ncKuioPe5rEoc1CayAGdITxu5AxD/JVCJqXhXIIj7RhS0SiEWLDZcEYJ/Y2ScCfqUNXYNPSw99+k8zUcvUXvP7AL737aBH2FZ4UQzaJ99JpjhP4m8b5pIVcfWFnqS8CZ9K7ksSqBWHpu80M3qAqUHLHF9B2vZqj+Sh6h3HyEUAaaEtvWTUrGn5MJVsed5MsVgUGJBgZD11ZrhqYuN8s83+ltAvMUIifbKYlZRUH3N6Mru2xorCsTTGJh69fEm1I77FUN0Pj29X2wb/QROIOqMjdamGqEXSnpbmKqzN+mo3YzB3kxWom8PLl88dzxiAPdmSxg11DPGZkLZSCRwVyaxOn+6USJ8rT3+2MybjsNGIyFlNE7pdoJqcCuoDkpWTDlmSF3sMfetnRwjZgT1n6ikuVpda9QZDBtXc6o6ss7uyIBWG+MQH5/nw7PDo+965qjXC4BRTJhU8jPULCceXmJQogwJ1bwB/S2ZAWiD4TdrECdCF7x9sPOHqITRTGV4MYYLHKbpCTGypS215BAw=
   file_glob: true
-  file: 
-    - dist/*
+  file: dist/*
   skip_cleanup: true
   on:
     tags: true
