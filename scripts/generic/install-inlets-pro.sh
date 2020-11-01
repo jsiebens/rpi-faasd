@@ -30,7 +30,7 @@ After=caddy.service
 
 [Service]
 EnvironmentFile=/etc/default/inlets-pro
-ExecStart=/usr/local/bin/inlets-pro client --connect ${INLETS_CONNECT} --token ${INLETS_TOKEN} --license ${INLETS_LICENSE} --tcp-ports 80,443
+ExecStart=/usr/local/bin/inlets-pro client --url ${INLETS_CONNECT} --token ${INLETS_TOKEN} --license ${INLETS_LICENSE} --ports 80,443
 Type=simple
 Restart=always
 RestartSec=5

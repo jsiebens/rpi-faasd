@@ -1,6 +1,6 @@
 {
-    "faasd_version": "0.9.5",
-    "inlets_oss_version": "2.7.3",
-    "inlets_pro_version": "0.6.2",
+    "faasd_version": "0.9.6",
+    "inlets_oss_version": "2.7.10",
+    "inlets_pro_version": "0.7.2",
     "caddy_version": "2.1.1"
 }
