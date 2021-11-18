@@ -20,3 +20,24 @@ jobs:
         run: |
           packer init packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
           sudo packer build -parallel-builds=1 packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
+
+      - name: "📦 Package the ubuntu image"
+        uses: OctoPrint/actions/package-rpi-image@main
+        with:
+          image_path: "images/rpi-faasd-ubuntu-arm64.img"
+
+      - name: "📦 Package the raspios image"
+        uses: OctoPrint/actions/package-rpi-image@main
+        with:
+          image_path: "images/rpi-faasd-raspios-armhf.img"
+
+      - name: "🔖 Create release & attach assets"
+        if: github.ref == 'refs/heads/github_actions' && github.event_name == 'push'
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            images/*.zip*          
