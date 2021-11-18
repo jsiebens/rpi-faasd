@@ -1,0 +1,22 @@
+name: build
+
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "⬇ Checkout"
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 1
+
+      - name: "⬇ Install Packer"
+        uses: hashicorp-contrib/setup-packer@v1
+
+      - name: "🏗 Run Packer"
+        run: |
+          packer init packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
+          sudo packer build packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
