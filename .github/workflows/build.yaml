@@ -19,4 +19,4 @@ jobs:
       - name: "🏗 Run Packer"
         run: |
           packer init packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
-          sudo packer build packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
+          sudo packer build -parallel-builds=1 packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
