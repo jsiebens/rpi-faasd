@@ -18,6 +18,7 @@ jobs:
 
       - name: "🏗 Run Packer"
         run: |
+          mkdir images
           packer init packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
           sudo packer build -parallel-builds=1 packer/ubuntu/rpi-ubuntu-arm64.pkr.hcl
 
