@@ -31,13 +31,10 @@ build {
       "FAASD_VERSION=${var.faasd_version}"
     ]
     scripts          = [
-      "scripts/ubuntu/install-containerd.sh", 
+      "scripts/generic/install-dependencies.sh", 
+      "scripts/generic/install-containerd.sh", 
       "scripts/generic/install-cni-plugins.sh", 
       "scripts/generic/install-faasd.sh"
     ]
-  }
-
-  post-processor "compress" {
-    output = "dist/rpi-{{ .BuildName }}-ubuntu-arm64.img.xz"
   }
 }
