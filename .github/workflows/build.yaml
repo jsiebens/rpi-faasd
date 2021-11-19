@@ -1,0 +1,46 @@
+name: build
+
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "⬇ Checkout"
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 1
+
+      - name: "⬇ Install Packer"
+        uses: hashicorp-contrib/setup-packer@v1
+
+      - name: "🏗 Run Packer"
+        run: |
+          mkdir images
+          sudo packer init packer/
+          sudo packer build -parallel-builds=1 packer/
+
+      - name: "📦 Package the ubuntu image"
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: OctoPrint/actions/package-rpi-image@main
+        with:
+          image_path: "images/rpi-faasd-ubuntu-arm64.img"
+
+      - name: "📦 Package the raspios image"
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: OctoPrint/actions/package-rpi-image@main
+        with:
+          image_path: "images/rpi-faasd-raspios-armhf.img"
+
+      - name: "🔖 Create release & attach assets"
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            images/*.zip*          

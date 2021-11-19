@@ -14,11 +14,7 @@ Beside containerd, faasd and inlets, also [cloud-init](https://cloudinit.readthe
 
 This setup includes the following images:
 
-- __rpi-faasd__: a Raspbian/Ubuntu image with containerd and faasd as systemd services, to run a private faasd instance.
-
-- __rpi-faasd-inlets-oss__: a Raspbian/Ubuntu image with containerd, faasd and inlets oss as systemd services, to run a private faasd instance with a public endpoint.
-
-- __rpi-faasd-inlets-pro__: a Raspbian/Ubuntu image with containerd, faasd, Caddy and inlets pro as systemd services, to run a private faasd instance with a secure (TLS) public endpoint.
+- __rpi-faasd__: a Raspios/Ubuntu image with containerd and faasd as systemd services, to run a private faasd instance.
 
 ## How to use these images
 
@@ -34,42 +30,24 @@ This setup includes the following images:
 
 5. As soon the services are up and running, you can access OpenFaas on `http://<your raspberry pi ip>:8080`. The required basic auth credentials are available in `/var/lib/faasd/secrets/` on your Raspberry Pi
 
-### in combination with inlets oss
+### in combination with inlets-pro
 
 To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
 I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
 
-Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
+Next, create an HTTP exit-node on your favourite cloud provider, e.g. on DigitalOcean:
 
 ```
-inletsctl create  \   
-  --provider digitalocean \   
-  --access-token-file ~/access-token.txt \   
-  --region lon1
-```
-
-After writing the `rpi-faasd-inlets-pro` image to an SD card, configure your instance with the proper values for the required environment variables. (See examples/user-data-inlets-oss)
-
-### in combination with inlets pro
-
-To expose the faasd gateway running on a Raspberry Pi, you need to create an exit-node with a public ip.
-I find the use of [inletsctl](https://github.com/inlets/inletsctl) to easist way to achieve this. Download the latest release or simply install it by running `curl -sSLf https://inletsctl.inlets.dev | sudo sh`
-
-Next, create an exit-node on your favourite cloud provider, e.g. on DigitalOcean:
-
-```
-inletsctl create  \   
+inletsctl create  \
+  --tcp=false \   
   --provider digitalocean \   
   --access-token-file ~/access-token.txt \   
   --region lon1 \
-  --remote-tcp 127.0.0.1
+  --letsencrypt-domain <your domain>
+  --letsencrypt-email <your email>
 ```
 
-The last flag, `--remote-tcp`, tells the inlets pro client where to send traffic, which in this case will be the loopback-interface. The inlets pro client is configured to punch out ports 80 and 443 out of the tunnel.
-
-One thing left to do: get a domain ready for your faasd installation. Once you have a domain, add a DNS A record with the public ip of the exit-node. A domain is required for Caddy to generate some TLS certificates with Let's Encrypt.
-
-After writing the `rpi-faasd-inlets-oss` image to an SD card, configure your instance with the proper values for the required environment variables. (See examples/user-data-inlets-oss)
+After writing the `rpi-faasd` image to an SD card, configure your instance with the proper values for the required environment variables. (See examples/user-data-inlets)
 
 ## Building the images
 
@@ -89,9 +67,9 @@ vagrant up
 vagrant ssh
 ```
 
-When connected with the Vagrant box, run `make` in the `/vagrant` directory:
+When connected with the Vagrant box, run `build.sh` in the `/vagrant` directory:
 
 ```
 cd /vagrant
-make
+./build.sh
 ```

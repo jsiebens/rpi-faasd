@@ -15,7 +15,15 @@ write_files:
   content: faasd-admin
 - path: /var/lib/faasd/secrets/basic-auth-password
   content: "++01=health=MISS=system=53++"
+# Configure inlets pro  
+- path: /etc/default/inlets-pro
+  content: |
+    INLETS_URL=<your inlets pro remote, e.g. wss://243.15.53.46:8123/connect>
+    INLETS_TOKEN=<your inlets token>
+    INLETS_LICENSE=<your inlets pro license>
 
-# enable ssh
+# enable ssh and inlets-pro
 runcmd:
   - [ raspi-config, nonint, do_ssh, '0' ]
+  - [ systemctl, enable, inlets ]
+  - [ systemctl, start, inlets ]
