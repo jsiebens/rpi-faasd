@@ -1,6 +1,6 @@
 # faasd on a Raspberry Pi
 
-[![Build Status](https://travis-ci.org/jsiebens/rpi-faasd.svg?branch=master)](https://travis-ci.org/jsiebens/rpi-faasd)
+![main](https://github.com/jsiebens/rpi-faasd/actions/workflows/build.yaml/badge.svg?branch=main)
 
 Blog post: [A serverless appliance for your Raspberry Pi with faasd](https://johansiebens.dev/posts/2020/08/a-serverless-appliance-for-your-raspberry-pi-with-faasd/)
 
