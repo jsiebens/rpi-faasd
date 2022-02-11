@@ -27,10 +27,15 @@ jobs:
         with:
           image_path: "images/rpi-faasd-ubuntu-arm64.img"
 
-      - name: "📦 Package the raspios image"
+      - name: "📦 Package the raspios armhf image"
         uses: OctoPrint/actions/package-rpi-image@main
         with:
           image_path: "images/rpi-faasd-raspios-armhf.img"
+
+      - name: "📦 Package the raspios arm64 image"
+        uses: OctoPrint/actions/package-rpi-image@main
+        with:
+          image_path: "images/rpi-faasd-raspios-arm64.img"
 
       - name: "🔖 Attach assets"
         uses: skx/github-action-publish-binaries@master

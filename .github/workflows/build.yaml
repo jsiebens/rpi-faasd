@@ -28,11 +28,17 @@ jobs:
         with:
           image_path: "images/rpi-faasd-ubuntu-arm64.img"
 
-      - name: "📦 Package the raspios image"
+      - name: "📦 Package the raspios armhf image"
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: OctoPrint/actions/package-rpi-image@main
         with:
           image_path: "images/rpi-faasd-raspios-armhf.img"
+
+      - name: "📦 Package the raspios arm64 image"
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: OctoPrint/actions/package-rpi-image@main
+        with:
+          image_path: "images/rpi-faasd-raspios-arm64.img"
 
       - name: "🔖 Create release & attach assets"
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'

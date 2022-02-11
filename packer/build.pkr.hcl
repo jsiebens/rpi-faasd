@@ -1,5 +1,9 @@
 build {
-  sources = ["source.arm-image.faasd_raspios", "source.arm-image.faasd_ubuntu"]
+  sources = [
+    "source.arm-image.faasd_raspios_armhf", 
+    "source.arm-image.faasd_raspios_arm64", 
+    "source.arm-image.faasd_ubuntu"
+  ]
 
   provisioner "shell" {
     environment_vars = [
